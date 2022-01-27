@@ -25,7 +25,6 @@ export const Home = () =>{
                     <p>The current routes are available to browse / use:</p>
                     <div>
                         <div class="card" style={{width: '18rem'}}>
-                            <img src="#" class="card-img-top" alt="Placeholder Text" />
                             <div class="card-body">
                                 <h5 class="card-title">Airbnb Listings</h5>
                                 <p class="card-text">This page will provide Airbnb listings from around the world.</p>

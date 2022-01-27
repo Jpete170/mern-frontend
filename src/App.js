@@ -8,7 +8,7 @@ import Footer from './components/footer';
 
 //Page import declarations
 import {Home} from './screens/home';
-import { AirbnbIndex } from './screens/airbnb/airbnbIndex';
+import  AirbnbIndex  from './screens/airbnb/airbnbIndex';
 
 
 
