@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import { authInit, axiosGet } from "../../api/db";
 import axios from "axios";
+const accessToken = process.env.REACT_APP_API_ACCESS_TOKEN;
+
 export default class AirbnbIndex extends Component{
     
     state = {
@@ -20,6 +22,7 @@ export default class AirbnbIndex extends Component{
         ).catch(
             
         )
+        
     }
         //initial axiosGet call will be here)
     render(){

@@ -1,7 +1,6 @@
 //Placeholder file for eventual backend connection
 import axios from "axios";
-import db from "./db.json"
-
+const accessToken = process.env.REACT_APP_API_ACCESS_TOKEN;
 //const access_token = process.env.ACCESS_TOKEN;
 
 export const axiosGet = axios.create({
@@ -11,7 +10,6 @@ export const axiosGet = axios.create({
     
     headers: {
         'content-type': 'application/json',
-        'authorization': `Bearer ${db.access_token}`
-    }
-    
+        'authorization': `Bearer ${accessToken}`
+    },
 });
