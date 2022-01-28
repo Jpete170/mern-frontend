@@ -6,7 +6,7 @@ const accessToken = process.env.REACT_APP_API_ACCESS_TOKEN;
 export const axiosGet = axios.create({
     //set default options here
     baseURL: 'http://localhost:4000/api/v1',
-    timeout: 1000,
+    timeout: 3000,
     
     headers: {
         'content-type': 'application/json',

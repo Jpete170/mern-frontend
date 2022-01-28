@@ -9,6 +9,9 @@ import Footer from './components/footer';
 //Page import declarations
 import {Home} from './screens/home';
 import  AirbnbIndex  from './screens/airbnb/airbnbIndex';
+//import AirbnbPage from './screens/airbnb/singlePage'
+import SinglePage from './screens/airbnb/singlePage';
+import { AirbnbPage } from './screens/airbnb/singlePage';
 
 
 
@@ -24,9 +27,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/airbnb" element={<AirbnbIndex />} />
+              <Route  path="/airbnb/:_id" element={<SinglePage />}></Route>
+              
             </Routes>
           </div>
-        </Router>
+       </Router>
       </main>
       <footer class="footer">
         <Footer />
