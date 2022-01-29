@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { authInit, axiosGet } from "../../api/db";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 export default class AirbnbIndex extends Component{
     
@@ -57,3 +58,15 @@ export default class AirbnbIndex extends Component{
     }
 }
 
+const mapStateToProps = state =>({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+
+})
+/*
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AirbnbIndex)*/
