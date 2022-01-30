@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { useParams } from "react-router-dom";
 import { axiosGet } from "../../api/db";
 import { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
 export default class SinglePage extends Component{
     state = {
@@ -59,7 +60,16 @@ export default class SinglePage extends Component{
         
     }
 }
+/*
+const mapStateToProps = state =>({
 
+})
 
+const mapDispatchToProps = dispatch => ({
 
+})
 
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(SinglePage)*/
