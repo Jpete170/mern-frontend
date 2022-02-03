@@ -7,7 +7,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 
 //Page import declarations
-import {Home} from './screens/home';
+import Home from './screens/home';
 import  AirbnbIndex  from './screens/airbnb/airbnbIndex';
 //import AirbnbPage from './screens/airbnb/singlePage'
 import SinglePage from './screens/airbnb/singlePage';

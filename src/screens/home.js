@@ -1,8 +1,14 @@
-import React from "react";
+import React, {Component} from "react";
+import { getAPIToken } from "../api/db";
+import { axiosGet } from "../api/db";
 
-export const Home = () =>{
-    return(
-        <div>
+export default class Home extends Component{
+    componentDidMount(){
+        getAPIToken();
+    }
+    render(){
+        return(
+            <div>
             <div className="text-center text-decoration-underline">
                 <h1>Listings Finder</h1>
             </div>
@@ -35,5 +41,6 @@ export const Home = () =>{
                 </div>
             </div>
         </div>
-    )
+        )
+    }
 }

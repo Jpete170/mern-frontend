@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+
 export default class AirbnbIndex extends Component{
     
     state = {
@@ -13,19 +14,19 @@ export default class AirbnbIndex extends Component{
     
     componentDidMount(){
         this.testAxios();
+        
     }
     testAxios(){
         axiosGet('/airbnb/index',{
             responseType: 'json'
         }).then( response=>{
-            console.log(response)
+            //console.log(response)
             const docsArray = response.data;
             this.setState({docsArray})
         }
         ).catch(
             error => console.error(`Error: ${error}`)
         )
-        
     }
     handleReduxUpdate(){
         //code to update Redux store will go here
