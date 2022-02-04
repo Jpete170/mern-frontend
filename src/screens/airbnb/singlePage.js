@@ -4,11 +4,13 @@ import { axiosGet } from "../../api/db";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
+
 export default class SinglePage extends Component{
     state = {
         page: [],
         objID: [],
     }
+
     
     componentDidMount(){
         this.loadData();
@@ -17,7 +19,7 @@ export default class SinglePage extends Component{
      loadData() {
         //const  {getID} = this.state.objID;
         let findID = 10006546;
-        
+        //let {findID} = this.props.match.params
         try{
             axiosGet(`/airbnb/${findID}`,{
                         params:{},
@@ -37,6 +39,7 @@ export default class SinglePage extends Component{
     
 
     render(){
+        
         //const amenitiesArray = JSON.parse(this.state.page.amenities)
         try{
             return(

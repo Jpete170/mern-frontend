@@ -28,7 +28,7 @@ export default class AirbnbIndex extends Component{
         ).catch(
             error => console.error(`Error: ${error}`)
         )
-    }
+    };
 
     handleReduxUpdate(){
         //code to update Redux store will go here
@@ -47,7 +47,7 @@ export default class AirbnbIndex extends Component{
                             <h5 class="card-title">{item.name}</h5>
                             <p class="card-text">{item.summary}</p>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href={`/airbnb/${item._id}`} role="button" class="btn btn-primary">Go to Page</a> {/**May have to update this to a proper button to handle the onClick() event */}
+                                <a href={`/airbnb/${item._id}`} role="button" class="btn btn-primary" onClick={this.handleReduxUpdate()}>Go to Page</a> {/**May have to update this to a proper button to handle the onClick() event */}
                             </div>
                             
                         </div>
