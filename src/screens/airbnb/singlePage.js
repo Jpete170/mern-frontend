@@ -16,16 +16,15 @@ export default class SinglePage extends Component{
 
      loadData() {
         //const  {getID} = this.state.objID;
-        let findID = "1003530";
+        let findID = 10006546;
+        
         try{
             axiosGet(`/airbnb/${findID}`,{
-                        params:{
-                            
-                        },
+                        params:{},
                         responseType: 'json'
                     }).then(response =>{
                         const page = response.data;
-                        console.log(page)
+                        //console.log(page)
                         this.setState({page})
                     }).catch(
                         error => console.error(`Error: ${error}`)
@@ -35,25 +34,37 @@ export default class SinglePage extends Component{
         }
         
     }
+    
 
     render(){
+        //const amenitiesArray = JSON.parse(this.state.page.amenities)
         try{
             return(
-            <article>
-                <div id="page" class="container">
+            <article class="d-flex align-content-center">
+                <div id="page" class="">
                     {this.state.page.map((item) =>
                         <div>
-                            <p>Item Name: {item.name}</p>
-                            <p>Item Description: {item.description}</p>
-                            <p>ObjectID:</p>
-                            <button>Go back</button>
+                            <h1>{item.name}</h1>
+                            <img src={item.images.picture_url}></img>
+                            <p>{item.space}</p>
+                            <p> {item.description}</p>
+                            <p>{item.neighborhood_overview}</p>
+                            <p>Available Amenities at this location</p>
+                            <ul> 
+                                <div> 
+                                {item.amenities.map(function(type){
+                                    return (
+                                        <li>{type}</li>
+                                    )
+                                })}</div>
+                            </ul>
                         </div>)}
                 </div>
                 </article>
             )
         } catch (error){
             return(
-                <div>Error</div>
+                <div>Error: {error}</div>
             )
         }
         

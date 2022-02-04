@@ -27,7 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/airbnb" element={<AirbnbIndex />} />
-              <Route  path="/airbnb/:_id" element={<SinglePage />}></Route>
+              <Route  path="/airbnb/:_id" element={<SinglePage/>}></Route>
               
             </Routes>
           </div>

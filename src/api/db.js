@@ -22,7 +22,7 @@ const options = {
         "grant_type":"client_credentials"
     },
 };
-let test;
+
 export function getAPIToken(){
 
     axios(options)
@@ -45,13 +45,12 @@ export const axiosGet = axios.create({
     },
 });
 
-const refreshAuthLogic = failedRequest => axios(options).then(tokenRefreshResponse =>{
-    localStorage.setItem('token', tokenRefreshResponse.data.access_token);
-    //test = tokenRefreshResponse;
-    //failedRequest.response.defaults.headers['Authorization'] = 'Bearer ' + tokenRefreshResponse.data.access_token;
-    failedRequest.response.config.headers['Authorization'] = 'Bearer ' + tokenRefreshResponse.data.access_token;
+const refreshAuthLogic = failedRequest => axios(options).then(refreshResponse =>{
+    localStorage.setItem('access_token', refreshResponse.data.access_token);
+    failedRequest.response.config.headers['Authorization'] = 'Bearer ' + refreshResponse.data.access_token;
+    axiosGet.defaults.headers.common['Authorization'] = 'Bearer ' + refreshResponse;
     return Promise.resolve();
 })
 
-createAuthRefreshInterceptor(axiosGet, refreshAuthLogic, {statusCodes:[401, 403], retryInstance: axiosGet})
+createAuthRefreshInterceptor(axiosGet, refreshAuthLogic, {statusCodes:[401, 403], })
 

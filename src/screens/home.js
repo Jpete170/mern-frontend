@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import { getAPIToken } from "../api/db";
 
 
 export default class Home extends Component{
