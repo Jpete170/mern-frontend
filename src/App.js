@@ -11,13 +11,14 @@ import Home from './screens/home';
 import  AirbnbIndex  from './screens/airbnb/airbnbIndex';
 //import AirbnbPage from './screens/airbnb/singlePage'
 import SinglePage from './screens/airbnb/singlePage';
-import { AirbnbPage } from './screens/airbnb/singlePage';
+
+import { Listing } from './screens/airbnb/listing';
 
 
 
 function App() {
   return (
-    <body className="">
+    <div className="">
       <header>
         <Navigation/>
       </header>
@@ -27,7 +28,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/airbnb" element={<AirbnbIndex />} />
-              <Route  path="/airbnb/:_id" element={<SinglePage/>}></Route>
+              <Route  path="/airbnb/:_id" element={<Listing/>}></Route>
               
             </Routes>
           </div>
@@ -36,7 +37,7 @@ function App() {
       <footer class="footer">
         <Footer />
       </footer>
-    </body>
+    </div>
   );
 }
 
