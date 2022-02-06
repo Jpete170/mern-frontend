@@ -17,12 +17,12 @@ export default class SinglePage extends Component{
         
     }
 
-     loadData() {
+     async loadData() {
         //const  {getID} = this.state.objID;
         let findID = URL_Listing();
         //let {findID} = this.props.match.params
         try{
-            axiosGet(`${findID}`,{
+           await axiosGet(`${findID}`,{
                         params:{},
                         responseType: 'json'
                     }).then(response =>{
