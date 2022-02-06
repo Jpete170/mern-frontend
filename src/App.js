@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle'
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 
 import {Navigation} from './components/NavBar';
@@ -9,8 +10,7 @@ import Footer from './components/footer';
 //Page import declarations
 import Home from './screens/home';
 import  AirbnbIndex  from './screens/airbnb/airbnbIndex';
-//import AirbnbPage from './screens/airbnb/singlePage'
-import SinglePage from './screens/airbnb/singlePage';
+import About from './screens/about';
 
 import { Listing } from './screens/airbnb/listing';
 
@@ -19,14 +19,15 @@ import { Listing } from './screens/airbnb/listing';
 function App() {
   return (
     <div className="">
-      <header>
+      <div>
         <Navigation/>
-      </header>
+      </div>
       <main class="container">
         <Router>
           <div>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path='/about' element={<About/>} />
               <Route path="/airbnb" element={<AirbnbIndex />} />
               <Route  path="/airbnb/:_id" element={<Listing/>}></Route>
               
