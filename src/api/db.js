@@ -9,12 +9,10 @@ const authClient = process.env.REACT_APP_CLIENT_ID;
 const authClientSecret = process.env.REACT_APP_CLIENT_SECRET;
 const authAudience = process.env.REACT_APP_AUDIENCE;
 
-let baseURL;
-if (process.env.NODE_ENV == "development"){
-    baseURL = 'http://localhost:4000/api/v1';
-} else if (process.env.NODE_ENV == "production"){
-    baseURL = 'https://express-webapp-jpete.herokuapp.com/api/v1'
-}
+const baseURL = process.env.REACT_APP_BASEURL;
+
+
+
 
 const options = {
     method: 'post',
