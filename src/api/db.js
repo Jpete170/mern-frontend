@@ -28,20 +28,11 @@ const options = {
     },
 };
 
-export function getAPIToken(){
-
-    axios(options)
-    .then(response =>{
-        //need a way to dynamically update the axios header
-       let test1 = response.data.access_token;
-       console.log(test1)
-    })
-    
-}
 
 export const axiosGet = axios.create({
     //set default options here
-    baseURL: `${baseURL}`,
+    //baseURL: 'http://localhost:4000/api/v1'
+    baseURL: 'https://express-webapp-jpete.herokuapp.com/api/v1',
     timeout: 3000,
     
     headers: {
