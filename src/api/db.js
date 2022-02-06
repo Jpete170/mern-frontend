@@ -31,8 +31,8 @@ const options = {
 
 export const axiosGet = axios.create({
     //set default options here
-    //baseURL: 'http://localhost:4000/api/v1'
-    baseURL: 'https://express-webapp-jpete.herokuapp.com/api/v1',
+    baseURL: 'http://localhost:4000/api/v1',
+    //baseURL: 'https://express-webapp-jpete.herokuapp.com/api/v1',
     timeout: 3000,
     
     headers: {
@@ -42,7 +42,7 @@ export const axiosGet = axios.create({
 });
 
 const refreshAuthLogic = failedRequest => axios(options).then(refreshResponse =>{
-    localStorage.setItem('access_token', refreshResponse.data.access_token);
+    //localStorage.setItem('access_token', refreshResponse.data.access_token);
     failedRequest.response.config.headers['Authorization'] = 'Bearer ' + refreshResponse.data.access_token;
     axiosGet.defaults.headers.common['Authorization'] = 'Bearer ' + refreshResponse;
     return Promise.resolve();
