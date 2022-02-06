@@ -9,6 +9,13 @@ const authClient = process.env.REACT_APP_CLIENT_ID;
 const authClientSecret = process.env.REACT_APP_CLIENT_SECRET;
 const authAudience = process.env.REACT_APP_AUDIENCE;
 
+let baseURL;
+if (process.env.NODE_ENV == "development"){
+    baseURL = 'http://localhost:4000/api/v1';
+} else if (process.env.NODE_ENV == "production"){
+    baseURL = 'https://express-webapp-jpete.herokuapp.com/api/v1'
+}
+
 const options = {
     method: 'post',
     url: `${authURL}`,
@@ -36,7 +43,7 @@ export function getAPIToken(){
 
 export const axiosGet = axios.create({
     //set default options here
-    baseURL: 'http://localhost:4000/api/v1',
+    baseURL: `${baseURL}`,
     timeout: 3000,
     
     headers: {
