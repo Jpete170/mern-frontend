@@ -5,6 +5,7 @@ import { URL_Listing } from "./listing";
 
 import { TableOfContents } from "../../components/TableOfContent";
 
+
 export default class SinglePage extends Component{
     state = {
         page: [],
@@ -22,7 +23,7 @@ export default class SinglePage extends Component{
         let findID = URL_Listing();
         //let {findID} = this.props.match.params
         try{
-            axiosGet(`${findID}`,{
+           axiosGet(`${findID}`,{
                         params:{},
                         responseType: 'json'
                     }).then(response =>{
@@ -41,7 +42,7 @@ export default class SinglePage extends Component{
 
     render(){
         
-        //const amenitiesArray = JSON.parse(this.state.page.amenities)
+        
         try{
             return(
             <article class="d-flex align-content-center ">
@@ -99,7 +100,7 @@ export default class SinglePage extends Component{
                                         <li>Maximum Nights: {item.maximum_nights}</li>
                                         <li>Property Accommodates: {item.accommodates}</li>
                                         <li>Bedrooms: {item.bedrooms}, Beds: {item.beds}</li>
-                                        <li>Bathrooms: 1 (Placeholder)</li>
+                                        <li>Bathrooms: {parseFloat(item.bathrooms['$numberDecimal'])}</li>
                                     </ul>
                             </div>
 
@@ -109,14 +110,16 @@ export default class SinglePage extends Component{
                                 </div>
                                 <div>
                                     <p>The associated prices of the property are displayed below.</p>
+                                    <p>It is safe to assume that the prices are in the currency of the country that the AirBnB listing is located in.</p>
                                 </div>
                                 <div>
                                     <ul>
-                                        <li>Property Price: (Placeholder)</li>
+                                        <li>Property Price: {item.price['$numberDecimal']}</li>
+                                        
                                         <li>Security Deposit: (Placeholder)</li>
-                                        <li>Cleaning Fee: (Placeholder)</li>
-                                        <li>Extra People: (Placeholder)</li>
-                                        <li>Guests Included: (Placeholder)</li>
+                                        <li>Cleaning Fee: (placeholder)</li>
+                                        <li>Extra People:  (placeholder) per extra person</li>
+                                        <li>Guests Included: (placeholder)</li>
                                     </ul>
                                 </div>
                             </div>
@@ -137,7 +140,7 @@ export default class SinglePage extends Component{
                                     <h3>Available Host Information</h3>
                                 </div>
                                 <div>
-                                    <p>Host Name: {item.host.host_name}</p>
+                                    <p>Host Name: {item.host.host_name} </p>
                                     <p>Host ID: {item.host.host_id}</p>
                                     <p>Host URL: <a href={item.host.host_url}>{item.host.host_url}</a></p>
                                     <p>Host Location: {item.host.host_location}</p>

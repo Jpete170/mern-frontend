@@ -16,8 +16,8 @@ export default class AirbnbIndex extends Component{
         
     }
 
-    loadIndexData(){
-        axiosGet('/airbnb/index',{
+    async loadIndexData(){
+        await axiosGet('/airbnb/index',{
             responseType: 'json',
             params:{
                 

@@ -11,14 +11,14 @@ export default class Home extends Component{
                 <h1>Listings Finder</h1>
             </div>
             <div class="">
-                <p>This is the front end portion for my <a href="/">MERN Fullstack project</a>. This is a React project created using the Create React App CLI command, and uses <a href="?">Bootstrap</a> for CSS styling.</p>
+                <p>This is the front end portion for my <a href="/">MERN Fullstack project</a>. This is a React project created using the Create React App CLI command, and uses <a href="https://getbootstrap.com">Bootstrap</a> for CSS styling.</p>
             </div>
             <div>
                 <div class="text-decoration-underline">
                     <h3>Disclaimer</h3>
                 </div>
                 <div>
-                    <p>This project uses the sample data collections provided by <a href="#" class="">MongoDB</a>, and is not reflective of any actual data used by real world companies.</p>
+                    <p>This project uses the sample data collections provided by <a href="https://www.mongodb.com/" class="">MongoDB</a>, and is not reflective of any actual data used by real world companies.</p>
                 </div>
             </div>
             <div>

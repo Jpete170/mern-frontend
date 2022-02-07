@@ -8,7 +8,7 @@ export default function Footer(){
             <li class="nav-item"><a href="/airbnb" class="nav-link px-2 text-muted">Airbnb Listings</a></li>
             
             </ul>
-            <p class="text-center text-muted">© 2021 Jackson Peters</p>
+            <p class="text-center text-muted">2021 Jackson Peters</p>
         </footer>
     </div>
     )
