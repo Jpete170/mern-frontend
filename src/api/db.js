@@ -11,9 +11,6 @@ const authAudience = process.env.REACT_APP_AUDIENCE;
 
 const baseURL = process.env.REACT_APP_BASEURL;
 
-
-
-
 const options = {
     method: 'post',
     url: `${authURL}`,
@@ -31,7 +28,7 @@ const options = {
 
 export const axiosGet = axios.create({
     //set default options here
-    baseURL: 'http://localhost:4000/api/v1',
+    baseURL: `${baseURL}`,
     //baseURL: 'https://express-webapp-jpete.herokuapp.com/api/v1',
     timeout: 3000,
     
@@ -44,9 +41,8 @@ export const axiosGet = axios.create({
 const refreshAuthLogic = failedRequest => axios(options).then(refreshResponse =>{
     //localStorage.setItem('access_token', refreshResponse.data.access_token);
     failedRequest.response.config.headers['Authorization'] = 'Bearer ' + refreshResponse.data.access_token;
-    axiosGet.defaults.headers.common['Authorization'] = 'Bearer ' + refreshResponse;
+    axiosGet.defaults.headers.common['Authorization'] = 'Bearer ' + refreshResponse.data.access_token;
     return Promise.resolve();
 })
 
 createAuthRefreshInterceptor(axiosGet, refreshAuthLogic, {statusCodes:[401, 403], })
-

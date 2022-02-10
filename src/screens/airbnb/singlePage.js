@@ -34,14 +34,14 @@ export default class SinglePage extends Component{
                         error => console.error(`Error: ${error}`)
                     )
         } catch (error){
-
+            console.error(error);
         }
         
     }
     
-
+    
     render(){
-        
+        let SecurityDepositAmount = 0;
         
         try{
             return(
@@ -116,7 +116,7 @@ export default class SinglePage extends Component{
                                     <ul>
                                         <li>Property Price: {item.price['$numberDecimal']}</li>
                                         
-                                        <li>Security Deposit: (Placeholder)</li>
+                                        <li>Security Deposit: {SecurityDepositAmount}</li>
                                         <li>Cleaning Fee: (placeholder)</li>
                                         <li>Extra People:  (placeholder) per extra person</li>
                                         <li>Guests Included: (placeholder)</li>

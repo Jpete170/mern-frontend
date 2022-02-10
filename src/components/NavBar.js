@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ServerStatus from "./serverStatus";
 
 export const Navigation = () =>{
     return(
@@ -19,7 +20,11 @@ export const Navigation = () =>{
                     <li class="nav-item">
                         <a class="nav-link active" href="/airbnb">Airbnb Listings </a>
                     </li>
-                    
+                    <li class="">
+                        <div class="m">
+                            
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
