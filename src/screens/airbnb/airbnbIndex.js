@@ -9,6 +9,8 @@ export default class AirbnbIndex extends Component{
     state = {
         docsArray: [],
         singleDoc: [],
+        selectedFilterOption: [],
+        selectedPageLimit: [],
     }
     
     componentDidMount(){
@@ -32,20 +34,71 @@ export default class AirbnbIndex extends Component{
         )
     };
 
+    onChange_5(){
+        const selectedPageLimit = 5;
+        //this.setState({selectedPageLimit: 5})
+        //console.log(this.state.selectedPageLimit)
+    }
      
     render(){
         return(
-            <div>
-            <div className="d-flex align-content-center text-center">
+        <div class="d-flex justify-content-center">
+            <div className="">
                 <div id='docs' class="">
-                    <p>The Index page for the AirBnB API Route</p>
+                    <div class="text-center">
+                        <div>
+                            <h1>AirBnB Listings</h1>
+                        </div>
+
+                    </div>
+                    <div class="accordion" id="filter-accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Filter Options
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        The features listed under "Filter Options" are not currently properly implemented, and are only visually implemented.
+                                    </div>
+                                    <div id="search" class="">
+                                        <form class="d-flex">
+                                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                                
+                                            <button type="button" class="btn btn-outline-success" >Search</button>
+                                        </form> 
+                                    </div>
+                                    <br />
+                                    <div id="resultAmount" class="d-flex">
+                                        <h5>Result Amount:</h5>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="option1" onChange={this.onChange_5}/>
+                                        <label class="form-check-label" for="option1">
+                                            5 Listings
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="option2" />
+                                        <label class="form-check-label" for="option2">
+                                            10 Listings
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
                     {this.state.docsArray.map((item) =>
                     <div class="card" style={{width: '48rem', margin: 10}} key={item._id}>
                         <div class="card-body">
                             <h5 class="card-title">{item.name}</h5>
                             <p class="card-text">{item.summary}</p>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href={`/airbnb/${item._id}`} role="button" class="btn btn-primary">Go to Page</a>
+                                <a href={`/airbnb/${item._id}`} role="button" class="btn btn-primary">View Listing</a>
                             </div>
                             
                         </div>
