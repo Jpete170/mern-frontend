@@ -53,7 +53,7 @@ export default class SinglePage extends Component{
                                 <h1>{item.name}</h1>
                             </div>
                             <div class="">
-                                <img src={item.images.picture_url} class="img-fluid rounded mx-auto d-block"></img>
+                                <img src={item.images.picture_url} class="img-thumbnail img-fluid rounded mx-auto d-block"></img>
                             </div>
                             <div class="py-3 ">
                                 <span class="">
@@ -66,10 +66,14 @@ export default class SinglePage extends Component{
                                    <h3>Description</h3> 
                                 </div>
                                 <div>
-                                    <p>Property Address: {item.address.street}, {item.address.suburb}, {item.address.goverment_area}, {item.address.market}, {item.address.country}, {item.address.country_code}</p>
-                                    <p>Property Co-Ordinates: {item.address.location.coordinates.map((coords)=> <div>
-                                    {coords}
-                                    </div>)}</p>
+                                    <h5 class="text-decoration-underline">Property Address</h5>
+                                    <p>Street: {item.address.street}, </p>
+                                    <p>Suburb: {item.address.suburb}, </p>
+                                    <p>Government Area: {item.address.government_area}, </p>
+                                    <p>Market: {item.address.market}, </p>
+                                    <p>Country: {item.address.country}, </p>
+                                    <p>Country Code: {item.address.country_code}</p>
+                                    
                                 </div>
                                 <div class="">
                                     <p>{item.space}</p>
@@ -160,6 +164,18 @@ export default class SinglePage extends Component{
                                 <div>
                                     <h3>Property Reviews</h3>
                                 </div>
+                                <div>
+                                    <h5 class="text-decoration-underline">Review Scores</h5>
+                                    <div>
+                                        <p>Review Accuracy: {item.review_scores.review_scores_accuracy} / 10</p>
+                                        <p>Cleanliness: {item.review_scores.review_scores_cleanliness} / 10</p>
+                                        <p>Check In: {item.review_scores.review_scores_checkin} / 10</p>
+                                        <p>Communication: {item.review_scores.review_scores_communication} / 10</p>
+                                        <p>Location: {item.review_scores.review_scores_location} / 10</p>
+                                        <p>Value: {item.review_scores.review_scores_value} / 10</p>
+                                        <p>Rating: {item.review_scores.review_scores_rating}%</p>
+                                    </div>
+                                </div>
                                 <div class="">
                                 {item.reviews.map((review)=>
                                 <div class="border border-black m-5">
@@ -169,6 +185,7 @@ export default class SinglePage extends Component{
                                     <p>{review.comments}</p>
                                 </div>)}
                                 </div>
+                            
                             </div>
                             
                         </div>)}

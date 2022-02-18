@@ -34,10 +34,24 @@ export default class AirbnbIndex extends Component{
         )
     };
 
-    onChange_5(){
-        const selectedPageLimit = 5;
-        //this.setState({selectedPageLimit: 5})
-        //console.log(this.state.selectedPageLimit)
+    async refreshFilterOptions(){
+        let pageLimit = 2 //this.state.selectedPageLimit;
+        await axiosGet(`/airbnb/index/filter?results=${pageLimit}`,{
+            responseType: 'json',
+            params:{
+               
+            }
+        }).then(response=>{
+            const docsArray = response.data;
+            this.setState({docsArray})
+        }).catch(
+            error => console.error(`Error: ${error}`)
+        )
+    }
+
+    onChange_5(){ // Show 5 results
+        //this.refreshFilterOptions();
+        console.log("This Works.")
     }
      
     render(){
@@ -75,7 +89,7 @@ export default class AirbnbIndex extends Component{
                                         <h5>Result Amount:</h5>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="option1" onChange={this.onChange_5}/>
+                                        <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="option1" onClick={this.onChange_5()}/>
                                         <label class="form-check-label" for="option1">
                                             5 Listings
                                         </label>
@@ -84,6 +98,12 @@ export default class AirbnbIndex extends Component{
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="option2" />
                                         <label class="form-check-label" for="option2">
                                             10 Listings
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="option3" />
+                                        <label class="form-check-label" for="option3">
+                                            15 Listings
                                         </label>
                                     </div>
                                 </div>
@@ -95,7 +115,8 @@ export default class AirbnbIndex extends Component{
                     {this.state.docsArray.map((item) =>
                     <div class="card" style={{width: '48rem', margin: 10}} key={item._id}>
                         <div class="card-body">
-                            <h5 class="card-title">{item.name}</h5>
+                            <h5 class="card-title text-center">{item.name}</h5>
+                            <img src={item.images.picture_url} class="img-thumbnail rounded mx-auto d-block" style={{width: 400}}></img>
                             <p class="card-text">{item.summary}</p>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <a href={`/airbnb/${item._id}`} role="button" class="btn btn-primary">View Listing</a>

@@ -9,7 +9,7 @@ const authClient = process.env.REACT_APP_CLIENT_ID;
 const authClientSecret = process.env.REACT_APP_CLIENT_SECRET;
 const authAudience = process.env.REACT_APP_AUDIENCE;
 
-const baseURL = process.env.REACT_APP_BASEURL;
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 const options = {
     method: 'post',
