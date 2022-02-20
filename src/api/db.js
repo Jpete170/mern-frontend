@@ -11,6 +11,8 @@ const authAudience = process.env.REACT_APP_AUDIENCE;
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
+let URL = (process.env.NODE_ENV == "production") ? "https://express-webapp-jpete.herokuapp.com/api/v1" : "http://localhost:4000/api/v1"
+
 const options = {
     method: 'post',
     url: `${authURL}`,
@@ -28,7 +30,7 @@ const options = {
 
 export const axiosGet = axios.create({
     //set default options here
-    baseURL: `${baseURL}`,
+    baseURL: `${URL}`,
     //baseURL: 'https://express-webapp-jpete.herokuapp.com/api/v1',
     timeout: 3000,
     
