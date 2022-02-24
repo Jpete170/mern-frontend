@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { axiosGet } from "../../api/db";
+import Spinner from "../../components/Spinner";
 /* Keep this here
 import { connect } from "react-redux";
 */
@@ -11,6 +12,7 @@ export default class AirbnbIndex extends Component{
         singleDoc: [],
         selectedFilterOption: [],
         selectedPageLimit: [],
+        loaded: false,
     }
     
     componentDidMount(){
@@ -28,6 +30,7 @@ export default class AirbnbIndex extends Component{
             //console.log(response)
             const docsArray = response.data;
             this.setState({docsArray})
+            this.setState({loaded: true})
         }
         ).catch(
             error => console.error(`Error: ${error}`)
@@ -112,7 +115,7 @@ export default class AirbnbIndex extends Component{
                     </div>
                 
                     
-                    {this.state.docsArray.map((item) =>
+                    {(this.state.loaded) ? this.state.docsArray.map((item) =>
                     <div class="card" style={{width: '48rem', margin: 10}} key={item._id}>
                         <div class="card-body">
                             <h5 class="card-title text-center">{item.name}</h5>
@@ -125,7 +128,7 @@ export default class AirbnbIndex extends Component{
                         </div>
                     </div>
                     
-                    )}
+                    ) : <Spinner/>}
                     
                 </div>
             </div>

@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import { URL_Listing } from "./listing";
 
 import { TableOfContents } from "../../components/TableOfContent";
-
+import Spinner from "../../components/Spinner";
 
 export default class SinglePage extends Component{
     state = {
         page: [],
         objID: [],
+        loaded: false,
     }
 
     
@@ -19,9 +20,7 @@ export default class SinglePage extends Component{
     }
 
       loadData() {
-        //const  {getID} = this.state.objID;
         let findID = URL_Listing();
-        //let {findID} = this.props.match.params
         try{
            axiosGet(`${findID}`,{
                         params:{},
@@ -30,6 +29,7 @@ export default class SinglePage extends Component{
                         const page = response.data;
                         //console.log(page)
                         this.setState({page})
+                        this.setState({loaded: true})
                     }).catch(
                         error => console.error(`Error: ${error}`)
                     )
@@ -39,14 +39,18 @@ export default class SinglePage extends Component{
         
     }
     
-    
-    render(){
+    loadSpinner(){
+        return(
+            <div class="">
+                <Spinner/>
+            </div>
+        )
+    }
+
+    pageContents(){
         let SecurityDepositAmount = 0;
-        
-        try{
-            return(
-            <article class="d-flex align-content-center ">
-                <div id="page" class="">
+        return(
+            <div id="page" class="">
                     {this.state.page.map((item) =>
                         <div>
                             <div class="text-center text-decoration-underline">
@@ -190,7 +194,17 @@ export default class SinglePage extends Component{
                             
                         </div>)}
                 </div>
-                </article>
+        )
+    }
+    
+    render(){
+        
+        try{
+            return(
+            <article class="d-flex align-content-center">
+                {(this.state.loaded) ? this.pageContents() : this.loadSpinner()}
+                
+            </article>
             )
         } catch (error){
             return(
