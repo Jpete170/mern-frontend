@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { axiosGet } from "../../api/db";
+import  axiosGet  from "../../api/db";
 import { connect } from "react-redux";
 import { URL_Listing } from "./listing";
 

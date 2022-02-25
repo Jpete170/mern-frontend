@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { axiosGet } from "../../api/db";
+import  axiosGet  from "../../api/db";
 import Spinner from "../../components/Spinner";
 /* Keep this here
 import { connect } from "react-redux";
@@ -92,7 +92,7 @@ export default class AirbnbIndex extends Component{
                                         <h5>Result Amount:</h5>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="option1" onClick={this.onChange_5()}/>
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="option1" />
                                         <label class="form-check-label" for="option1">
                                             5 Listings
                                         </label>

@@ -1,7 +1,7 @@
 export const TableOfContents = () =>{
     return(
-        <div class="border p-2 border-dark">
-            <div class="text-decoration-underline">
+        <div class="border p-2 border-dark w-25 ">
+            <div class="text-decoration-underline text-center">
                 <h3>Table of Contents</h3>
             </div>
             <div>

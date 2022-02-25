@@ -1,4 +1,4 @@
-import { axiosGet } from "../api/db";
+import axiosGet  from "../api/db";
 import axios from "axios";
 import React, {Component} from "react"
 

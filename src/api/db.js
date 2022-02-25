@@ -2,14 +2,12 @@ import axios from "axios";
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
 
 //This is kept for development purposes
-let accessToken = '';
+let AuthToken;
 
 const authURL = process.env.REACT_APP_URL_SECRET;
 const authClient = process.env.REACT_APP_CLIENT_ID;
 const authClientSecret = process.env.REACT_APP_CLIENT_SECRET;
 const authAudience = process.env.REACT_APP_AUDIENCE;
-
-const baseURL = process.env.REACT_APP_BASE_URL;
 
 let URL = (process.env.NODE_ENV == "production") ? "https://express-webapp-jpete.herokuapp.com/api/v1" : "http://localhost:4000/api/v1"
 
@@ -27,8 +25,7 @@ const options = {
     },
 };
 
-
-export const axiosGet = axios.create({
+const axiosGet = axios.create({
     //set default options here
     baseURL: `${URL}`,
     //baseURL: 'https://express-webapp-jpete.herokuapp.com/api/v1',
@@ -36,15 +33,33 @@ export const axiosGet = axios.create({
     
     headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
+        'Authorization': `Bearer`
     },
 });
+/*
+function getToken(){
+    let token;
 
+    axios(options).then(response=>{
+       return token = response.data.access_token;
+    })
+    console.log(token)
+}
+
+const tokenGet = axios(options).then(response =>{
+    let token = response.data.access_token;
+    return Promise.resolve();
+})
+*/
 const refreshAuthLogic = failedRequest => axios(options).then(refreshResponse =>{
-    //localStorage.setItem('access_token', refreshResponse.data.access_token);
-    failedRequest.response.config.headers['Authorization'] = 'Bearer ' + refreshResponse.data.access_token;
-    axiosGet.defaults.headers.common['Authorization'] = 'Bearer ' + refreshResponse.data.access_token;
+    //localStorage.setItem('token', refreshResponse.data.access_token);
+    AuthToken = 'Bearer '+ refreshResponse.data.access_token;
+    //localStorage.setItem('access_token', AuthToken)
+    failedRequest.response.config.headers['Authorization'] = AuthToken;
+    
     return Promise.resolve();
 })
 
 createAuthRefreshInterceptor(axiosGet, refreshAuthLogic, {statusCodes:[401, 403], })
+
+export default axiosGet;
