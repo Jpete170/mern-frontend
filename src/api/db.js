@@ -1,7 +1,7 @@
 import axios from "axios";
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
 
-//This is kept for development purposes
+//This is used in the auto-refresh logic for auth tokens, it's declared here for prior development purposes
 let AuthToken;
 
 const authURL = process.env.REACT_APP_URL_SECRET;
@@ -25,36 +25,22 @@ const options = {
     },
 };
 
+const getStorageToken = sessionStorage.getItem('access_token')
+
 const axiosGet = axios.create({
     //set default options here
     baseURL: `${URL}`,
-    //baseURL: 'https://express-webapp-jpete.herokuapp.com/api/v1',
     timeout: 3000,
     
     headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer`
+        'Authorization': `${getStorageToken}`
     },
 });
-/*
-function getToken(){
-    let token;
-
-    axios(options).then(response=>{
-       return token = response.data.access_token;
-    })
-    console.log(token)
-}
-
-const tokenGet = axios(options).then(response =>{
-    let token = response.data.access_token;
-    return Promise.resolve();
-})
-*/
+//Handle the automatic refreshing of authentication tokens
 const refreshAuthLogic = failedRequest => axios(options).then(refreshResponse =>{
-    //localStorage.setItem('token', refreshResponse.data.access_token);
     AuthToken = 'Bearer '+ refreshResponse.data.access_token;
-    //localStorage.setItem('access_token', AuthToken)
+    sessionStorage.setItem('access_token', AuthToken)
     failedRequest.response.config.headers['Authorization'] = AuthToken;
     
     return Promise.resolve();

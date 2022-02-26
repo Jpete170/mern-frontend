@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import  axiosGet  from "../../api/db";
-import { connect } from "react-redux";
+import { connect } from "react-redux"; // potential use for state management
 import { URL_Listing } from "./listing";
 
 import { TableOfContents } from "../../components/TableOfContent";
@@ -203,7 +203,6 @@ export default class SinglePage extends Component{
             return(
             <article class="d-flex align-content-center">
                 {(this.state.loaded) ? this.pageContents() : this.loadSpinner()}
-                
             </article>
             )
         } catch (error){
@@ -215,6 +214,7 @@ export default class SinglePage extends Component{
         
     }
 }
+//Skeleton code for potential Redux implementation, when state needs to be managed
 /*
 const mapStateToProps = state =>({
 
