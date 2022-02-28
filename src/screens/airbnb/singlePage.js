@@ -51,23 +51,32 @@ export default class SinglePage extends Component{
         let SecurityDepositAmount = 0;
         return(
             <div id="page" class="">
+                
                     {this.state.page.map((item) =>
                         <div>
-                            <div class="text-center text-decoration-underline">
-                                <h1>{item.name}</h1>
-                            </div>
                             <div class="">
-                                <img src={item.images.picture_url} class="img-thumbnail img-fluid rounded mx-auto d-block"></img>
-                            </div>
-                            <div class="py-3 ">
-                                <span class="">
-                                    <TableOfContents />
-                                </span>
+                                <div class="">
+                                    <h1 class="text-center text-decoration-underline">{item.name}</h1>
+                                </div>
                             </div>
                             
                             <div class="">
-                                <div class="" id="Description">
+                                <img src={item.images.picture_url} class="img-thumbnail img-fluid rounded mx-auto d-block"></img>
+                            </div>
+                            <div class="py-3 d-flex justify-content-end">
+                                <div class="w-75">
+                                    <TableOfContents />
+                                </div>
+                            </div>
+                            
+                            <div class="">
+                                <div class="text-decoration-underline" id="Description">
                                    <h3>Description</h3> 
+                                </div>
+                              
+                                <div class="">
+                                    <p> {item.description}</p>
+                                    <p>{item.neighborhood_overview}</p>
                                 </div>
                                 <div>
                                     <h5 class="text-decoration-underline">Property Address</h5>
@@ -78,11 +87,6 @@ export default class SinglePage extends Component{
                                     <p>Country: {item.address.country}, </p>
                                     <p>Country Code: {item.address.country_code}</p>
                                     
-                                </div>
-                                <div class="">
-                                    <p>{item.space}</p>
-                                    <p> {item.description}</p>
-                                    <p>{item.neighborhood_overview}</p>
                                 </div>
                             </div>
                             <div id="General Information">
@@ -180,14 +184,17 @@ export default class SinglePage extends Component{
                                         <p>Rating: {item.review_scores.review_scores_rating}%</p>
                                     </div>
                                 </div>
-                                <div class="">
-                                {item.reviews.map((review)=>
-                                <div class="border border-black m-5">
-                                    <p>Review ID: {review._id}</p>
-                                    <p>Date: {review.date}</p>
-                                    <p>Reviewer Name: {review.reviewer_name}</p>
-                                    <p>{review.comments}</p>
-                                </div>)}
+                                <div class="container">
+                                    <div class="row row-cols-2">
+                                    {item.reviews.map((review)=>
+                                        <div class="col border border-black ">
+                                            <p>Review ID: {review._id}</p>
+                                            <p>Date: {review.date}</p>
+                                            <p>Reviewer Name: {review.reviewer_name}</p>
+                                            <p>{review.comments}</p>
+                                        </div>)}
+                                    </div>
+                                
                                 </div>
                             
                             </div>
