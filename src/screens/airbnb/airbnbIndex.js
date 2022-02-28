@@ -68,6 +68,7 @@ export default class AirbnbIndex extends Component{
                         </div>
 
                     </div>
+                    {/** Possible filter options, commented out due to no current functionality
                     <div class="accordion" id="filter-accordion">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
@@ -113,7 +114,7 @@ export default class AirbnbIndex extends Component{
                             </div>
                         </div>
                     </div>
-                
+                */}
                     
                     {(this.state.loaded) ? this.state.docsArray.map((item) =>
                     <div class="card" style={{width: '48rem', margin: 10}} key={item._id}>

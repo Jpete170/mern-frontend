@@ -1,21 +1,24 @@
-![React Logo](https://github.com/vercel/vercel/blob/main/packages/frameworks/logos/react.svg)
+# Listings Finder
 
-# React Example
+This is the GitHub repository is a part of my MERN web development project, with this React app acting as the front end portion of the project
 
-This directory is a brief example of a [React](https://reactjs.org/) app with [Serverless Functions](https://vercel.com/docs/v2/serverless-functions/introduction) that can be deployed with Vercel and zero configuration.
+## Web Hosting
 
-## Deploy Your Own
+This application is hosted on Vercel, and can be accessed [here](https://listingsfinder.jacksonpeters.dev). If the link doesn't work, the URL is https://listingsfinder.jacksonpeters.dev
 
-Deploy your own React project, along with Serverless Functions, with Vercel.
+## Technologies used
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app-functions&template=create-react-app)
+The technologies used in this project are as follows:
 
-_Live Example: https://create-react-app.now-examples.now.sh/_
+1. React, using the command `create-react-app`
+2. Axios, for handling the HTTP requests to the backend web server.
+3. Bootstrap CSS
 
-### How We Created This Example
+Additionally, [Redux](https://redux.js.org/) is also bootstrapped onto the project, for potential use in future versions of this application.
 
-To get started with React, along with [Serverless Functions](https://vercel.com/docs/v2/serverless-functions/introduction), with Vercel, you can use the [Create-React-App CLI](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) to initialize the project:
+## Related Repositories / Links
 
-```shell
-$ npx create-react-app my-app
-```
+The backend web server that this project uses can be found at this [link](https://github.com/Jpete170/express-webapp).
+
+The complete project documentation / write up can be found at this [link]().
+
