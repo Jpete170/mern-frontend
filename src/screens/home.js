@@ -1,17 +1,74 @@
 import React, {Component} from "react";
+import axiosGet from "../api/db";
+import Spinner from "../components/Spinner";
 
 export default class Home extends Component{
-    componentDidMount(){
-        
+    state = {
+        loaded: false,
+        airbnb_docsArray: []
     }
-    render(){
+    componentDidMount(){
+        this.loadPreview();
+    }
+
+    async loadPreview(){
+        await axiosGet('/airbnb/preview',{
+            responseType: 'json',
+            params:{
+
+            }
+        }).then(response=>{
+            const airbnb_docsArray = response.data;
+            this.setState({airbnb_docsArray})
+            this.setState({loaded: true})
+        })
+    }
+
+    loadSpinner(){
         return(
             <div>
+                <Spinner/>
+            </div>
+        )
+    }
+    
+    airbnb_contentPreview(){
+        return(
+            <div>
+                {this.state.airbnb_docsArray.map((item)=>
+                <div class="container">
+                    <div class="">
+                        <div class="">
+                           <div class="card" style={{margin: 5}} key={item.id} >
+                                <div class="card-body">
+                                    <h5 class="card-title text-center text-decoration-underline">{item.name}</h5>
+                                    <p>Host Country: {item.address.country}</p>
+                                    <p>{(item.space) ? item.space : <p>Check out the Listing for More Information</p>}</p>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                       <a href={`/airbnb/${item._id}`} role="button" class="btn btn-primary">View Listing</a> 
+                                    </div>
+                                    
+                                </div>
+                            </div>  
+                        </div>
+                         
+                    </div>
+                  
+                </div>
+                )}
+            </div>
+        )
+    }
+
+    render(){
+        return(
+        <div>
             <div className="text-center text-decoration-underline">
                 <h1>Listings Finder</h1>
             </div>
             <div class="">
                 <p>This is the front end portion for my <a href="/">MERN Fullstack project</a>. This is a React project created using the Create React App CLI command, and uses <a href="https://getbootstrap.com">Bootstrap</a> for CSS styling.</p>
+                <p>This website currently hosts a selection of AirBnB Listings, sourced from the example dataset from MongoDB.</p>
             </div>
             <div>
                 <div class="text-decoration-underline">
@@ -22,21 +79,16 @@ export default class Home extends Component{
                 </div>
             </div>
             <div>
-                <div class="text-decoration-underline">
-                    <h3>Routes</h3>
-                </div>
-                <div>
-                    <p>The current routes are available to browse / use:</p>
-                    <div>
-                        <div class="card" style={{width: '18rem'}}>
-                            <div class="card-body">
-                                <h5 class="card-title">Airbnb Listings</h5>
-                                <p class="card-text">This page will provide Airbnb listings from around the world.</p>
-                                <a href="/airbnb" class="btn btn-primary">Go to Page</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               <div class="text-decoration-underline">
+                   <h2>AirBnB Listings</h2>
+               </div>
+               <div>
+                   <p>Below is a selection of available AirBnB listings to view.</p>
+                   <p>Alternatively, click <a href="/airbnb" class="">Here</a> to view a larger selection of airbnb listings.</p>
+               </div>
+               <div>
+                   {(this.state.loaded) ? this.airbnb_contentPreview() : this.loadSpinner()}
+               </div>
             </div>
         </div>
         )

@@ -128,10 +128,7 @@ export default class SinglePage extends Component{
                                     <ul>
                                         <li>Property Price: {item.price['$numberDecimal']}</li>
                                         
-                                        <li>Security Deposit: {SecurityDepositAmount}</li>
-                                        <li>Cleaning Fee: (placeholder)</li>
-                                        <li>Extra People:  (placeholder) per extra person</li>
-                                        <li>Guests Included: (placeholder)</li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -141,6 +138,7 @@ export default class SinglePage extends Component{
                                 <ul> 
                                     <div> 
                                     {item.amenities.map(function(type){
+                                        
                                         return (
                                             <li>{type}</li>
                                         )

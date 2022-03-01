@@ -52,10 +52,6 @@ export default class AirbnbIndex extends Component{
         )
     }
 
-    onChange_5(){ // Show 5 results
-        //this.refreshFilterOptions();
-        console.log("This Works.")
-    }
      
     render(){
         return(
