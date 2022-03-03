@@ -117,7 +117,8 @@ export default class AirbnbIndex extends Component{
                         <div class="card-body">
                             <h5 class="card-title text-center">{item.name}</h5>
                             <img src={item.images.picture_url} class="img-thumbnail rounded mx-auto d-block" style={{width: 400}}></img>
-                            <p class="card-text">{item.summary}</p>
+                            <p class="card-text">Country: {item.address.country}</p>
+                            <p class="card-text">{(item.summary) ? item.summary : 'Check out the listing for more information.'}</p>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <a href={`/airbnb/${item._id}`} role="button" class="btn btn-primary">View Listing</a>
                             </div>

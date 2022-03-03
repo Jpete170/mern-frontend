@@ -48,7 +48,7 @@ export default class SinglePage extends Component{
     }
 
     pageContents(){
-        let SecurityDepositAmount = 0;
+
         return(
             <div id="page" class="">
                 
@@ -57,6 +57,9 @@ export default class SinglePage extends Component{
                             <div class="">
                                 <div class="">
                                     <h1 class="text-center text-decoration-underline">{item.name}</h1>
+                                </div>
+                                <div class="p-2">
+                                    <a href="/airbnb" class="btn btn-primary" role="button">Go Back</a>
                                 </div>
                             </div>
                             
@@ -126,9 +129,17 @@ export default class SinglePage extends Component{
                                 </div>
                                 <div>
                                     <ul>
-                                        <li>Property Price: {item.price['$numberDecimal']}</li>
-                                        
-                                        
+                                        <li>Property Price for 1 night: {item.price['$numberDecimal']} / night</li>
+                                        <li>Weekly Renting Price: {item.weekly_price['$numberDecimal']} / week</li>
+                                        <li>Monthly Renting Price: {item.monthly_price['$numberDecimal']} / month</li>
+                                        <li>Cleaning Fee: {item.cleaning_fee['$numberDecimal']}</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p>Guest information</p>
+                                    <ul>
+                                        <li>Extra People: {item.extra_people['$numberDecimal']}</li>
+                                        <li>Guests Included: {item.guests_included['$numberDecimal']}</li>
                                     </ul>
                                 </div>
                             </div>
