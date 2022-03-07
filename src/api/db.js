@@ -30,7 +30,7 @@ const getStorageToken = sessionStorage.getItem('access_token')
 const axiosGet = axios.create({
     //set default options here
     baseURL: `${URL}`,
-    timeout: 3000,
+    timeout: 10000,
     
     headers: {
         'content-type': 'application/json',
