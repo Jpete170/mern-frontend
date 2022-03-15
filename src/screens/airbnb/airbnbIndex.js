@@ -64,6 +64,7 @@ export default class AirbnbIndex extends Component{
                         </div>
 
                     </div>
+                    <div>
                     {/** Possible filter options, commented out due to no current functionality
                     <div class="accordion" id="filter-accordion">
                         <div class="accordion-item">
@@ -111,9 +112,14 @@ export default class AirbnbIndex extends Component{
                         </div>
                     </div>
                 */}
+                    </div>
+                    <div class="container">
+                        <div class="row row-cols-2">
+
                     
                     {(this.state.loaded) ? this.state.docsArray.map((item) =>
-                    <div class="card" style={{width: '48rem', margin: 10}} key={item._id}>
+                    <div class="cols">
+                       <div class="card" style={{ margin: 10}} key={item._id}>
                         <div class="card-body">
                             <h5 class="card-title text-center">{item.name}</h5>
                             <img src={item.images.picture_url} class="img-thumbnail rounded mx-auto d-block" style={{width: 400}}></img>
@@ -124,10 +130,13 @@ export default class AirbnbIndex extends Component{
                             </div>
                             
                         </div>
+                    </div> 
                     </div>
                     
-                    ) : <Spinner/>}
                     
+                    ) : <Spinner/>}
+                      </div>
+                    </div>
                 </div>
             </div>
         </div> 
