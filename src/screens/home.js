@@ -36,7 +36,7 @@ export default class Home extends Component{
         return(
             <div>
                 <div class="container">
-                    <div class="row row-cols-2">
+                    <div class="row row-cols-md-2">
                         {this.state.airbnb_docsArray.map((item)=>
                         
                                 <div class="cols">
@@ -81,15 +81,13 @@ export default class Home extends Component{
                 </div>
             </div>
     
-            <div class="accordion" id="ListingAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                             Airbnb Listings
-                        </button>
+            <div class="" id="">
+                <div class="">
+                    <h2 class="" id="">
+                        Airbnb Listings
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#headingOne">
-                        <div class="accordion-body">
+                    <div id="" class="" >
+                        <div class="">
                             <div>
                                 <p>Below is a selection of available AirBnB listings to view.</p>
                                 <p>Alternatively, click <a href="/airbnb" class="">Here</a> to view a larger selection of airbnb listings.</p>
