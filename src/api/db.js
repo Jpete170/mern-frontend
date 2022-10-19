@@ -9,13 +9,14 @@ const authClient = process.env.REACT_APP_CLIENT_ID;
 const authClientSecret = process.env.REACT_APP_CLIENT_SECRET;
 const authAudience = process.env.REACT_APP_AUDIENCE;
 
-let URL = (process.env.NODE_ENV == "production") ? "https://express-webapp-jpete.herokuapp.com/api/v1" : "http://localhost:4000/api/v1"
+let URL = (process.env.NODE_ENV == "production") ? "https://express-webapp.onrender.com/api/v1" : "http://localhost:4000/api/v1"
 
 const options = {
     method: 'post',
     url: `${authURL}`,
     headers:{
         'content-type': 'application/json',
+        
     },
     data: {
         "client_id": `${authClient}`,
@@ -34,7 +35,8 @@ const axiosGet = axios.create({
     
     headers: {
         'content-type': 'application/json',
-        'Authorization': `${getStorageToken}`
+        'Authorization': `${getStorageToken}`,
+        'Access-Control-Allow-Origin': 'localhost:3000/',
     },
 });
 //Handle the automatic refreshing of authentication tokens
